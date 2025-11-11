@@ -1,38 +1,57 @@
-# 🌐 OrganiHub
 
-**OrganiHub** est une application web collaborative tout-en-un pour centraliser vos outils d’organisation personnelle et professionnelle.
+# 🌐 OrganiHub Starter
 
-## 🚀 Modules disponibles
+**OrganiHub** est une application web multiplateforme et collaborative qui centralise 9 modules d’organisation :
+Notes, Agenda, To‑Do List, Revue de Presse, Veille RSS, Veille Réseaux Sociaux, Répertoire, Gestionnaire RS, Base de Données.
 
-- 🗒️ **Notes** — prise de notes intelligente avec raccourcis automatiques (`@date`, `#todo`, `@contact`)
-- 📅 **Agenda** — calendrier complet avec rappels et partage
-- ✅ **To-Do List** — gestion avancée des tâches (kanban, sous-tâches, priorités)
-- 📰 **Revue de Presse** — agrégateur d’actualités personnalisées
-- 🌐 **Veille RSS** — suivi automatique des flux RSS
-- 📱 **Veille Réseaux Sociaux** — surveillance d’activités sur X, LinkedIn, etc.
-- 👥 **Répertoire** — gestion centralisée des contacts
-- 📢 **Gestionnaire RS** — publication simultanée sur plusieurs réseaux
-- 🧮 **Base de Données** — création de tables et visualisations personnalisées
+Ce dépôt fournit un **starter** (frontend React + Vite + TailwindCSS, backend FastAPI, Docker) pour démarrer rapidement.
 
-## 🧱 Architecture
-
-- **Frontend :** React (Vite + Tailwind)
-- **Backend :** FastAPI
-- **Database :** PostgreSQL
-- **Sync :** WebSocket
-- **Sécurité :** Authentification JWT + chiffrement end-to-end
-
-## 💡 Fonctionnalités clés
-
-- Multi-plateforme (Desktop, Mobile, Web)
-- Collaboration en temps réel
-- Sauvegarde automatique et mode hors ligne
-- Thèmes clair/sombre personnalisables
-- Conformité RGPD
-
-## 🧰 Installation
+## 🚀 Démarrage rapide (Docker)
 
 ```bash
-git clone https://github.com/votre-nom/organihub.git
-cd organihub
-docker-compose up
+docker compose up --build
+# Frontend: http://localhost:5173
+# Backend:  http://localhost:8000/docs
+```
+
+## ▶️ Démarrage manuel (dev)
+
+### Backend
+```bash
+cd backend
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## 📚 Modules (MVP inclus)
+- 🗒️ Notes (raccourcis `@date`, `#todo`, `@contact` — parsing minimal)
+- 📅 Agenda (endpoints REST)
+- ✅ To‑Do List (CRUD + Kanban minimal)
+- 👥 Répertoire (contacts)
+(les autres modules sont pré‑maquettés)
+
+## 🧱 Stack
+- **Frontend** : React + Vite + TailwindCSS
+- **Backend** : FastAPI + Pydantic
+- **DB** : SQLite (dev) / PostgreSQL (prod via Docker)
+- **Auth** : JWT (stub)
+- **Sync** : WebSocket (placeholder)
+
+## 🔐 Sécurité & RGPD (base)
+- Sessions JWT en mémoire (dev), à remplacer par un provider sécurisé
+- CORS configuré
+- Exemple de .env
+
+## 🤝 Contribution
+Voir `docs/CONTRIBUTING.md`. Les issues/PR sont bienvenues.
+
+## 📄 Licence
+MIT. Voir `LICENSE`.
